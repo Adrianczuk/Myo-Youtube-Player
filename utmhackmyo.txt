@@ -1,0 +1,55 @@
+
+scriptId = 'com.thalmic.examples.myfirstscript' 
+scriptTitle = "My First Script"
+scriptDetailsUrl = "" 
+myo.setLockingPolicy("none")
+
+
+function onForegroundWindowChange(app, title)
+	myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
+	return true
+end
+function onPoseEdge(pose, edge)
+	myo.debug("onPoseEdge:"..pose..":"..edge)
+	--multiple function calls for extra hotkey presses
+	if (edge == "on") then
+		if (pose == "waveOut") then
+			onWaveOut()
+			onWaveOut()
+		elseif (pose == "waveIn") then
+			onWaveIn()
+			onWaveIn()
+		elseif (pose == "fist") then
+			onFist()
+		elseif (pose == "fingersSpread") then
+			onFingersSpread()
+			onFingersSpread()
+			onFingersSpread()
+		elseif (pose == "doubleTap") then
+			onDoubleTap()
+			onDoubleTap()
+			onDoubleTap()
+		end
+	end
+end
+--gestures made to trigger hotkeys on youtube webpage
+function onWaveOut()
+	myo.debug("Next")
+	myo.keyboard("right_arrow","press")
+end
+function onWaveIn() 
+	myo.debug("Previous")
+	myo.keyboard("left_arrow","press")
+end
+function onFist()
+	myo.debug("Previous")
+	myo.keyboard("space","press")
+end
+function onFingersSpread()
+	myo.debug("Next")
+	myo.keyboard("up_arrow","press")
+end
+function onDoubleTap()
+	myo.debug("Next")
+	myo.keyboard("down_arrow","press")
+end
