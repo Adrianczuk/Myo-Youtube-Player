@@ -1,2 +1,2 @@
 # Myo-Youtube-Player
-A Myo armband controlled youtube player
+Simply controlling youtube hotkeys with the Myo armband.
